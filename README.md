@@ -1,9 +1,3 @@
-# vite-vue-electron-template
+# 实现 Noname
 
-原项目:
-
-[electron-vite-vue](https://github.com/electron-vite/electron-vite-vue)
-
-参考：
-
-[electron-vite-react](https://github.com/electron-vite/electron-vite-react)
+通过实践来学习和进步。
