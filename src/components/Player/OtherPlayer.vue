@@ -20,7 +20,7 @@ defineProps<OtherPlayerProps>()
 <template>
   <div class="relative h-180px w-150px rounded-lg bg-[url(@/assets/images/wood.jpg)] p-1.5 shadow-2xl">
     <!-- identity -->
-    <div class="green-shadow absolute right--8px top--12px z-2 text-lg text-white">
+    <div class="absolute right--8px top--12px z-2 cursor-default text-lg text-white green-shadow">
       {{ identity }}
     </div>
     <!-- avatar -->
@@ -31,7 +31,7 @@ defineProps<OtherPlayerProps>()
       :draggable="false"
     >
     <!-- name -->
-    <div class="blue-shadow absolute left-15px top-20px z-2 text-lg text-white">
+    <div class="absolute left-15px top-20px z-2 text-lg text-white blue-shadow">
       {{ name }}
     </div>
     <!-- hp -->
@@ -50,15 +50,3 @@ defineProps<OtherPlayerProps>()
     </div>
   </div>
 </template>
-
-<style lang="less" scoped>
-.green-shadow {
-  text-shadow: rgba(57, 123, 4,1) 0 0 2px, rgba(57, 123, 4,1) 0 0 5px, rgba(57, 123, 4,1) 0 0 10px, rgba(57, 123, 4,1) 0 0 10px, rgba(57, 123, 4,1) 0 0 20px, rgba(57, 123, 4,1) 0 0 20px, black 0 0 1px;
-}
-.red-shadow {
-  text-shadow: rgba(128, 59, 2,1) 0 0 2px, rgba(128, 59, 2,1) 0 0 2px, rgba(128, 59, 2,1) 0 0 2px, rgba(128, 59, 2,1) 0 0 2px, black 0 0 1px;
-}
-.blue-shadow {
-  text-shadow: rgba(78, 117, 140,1) 0 0 2px, rgba(78, 117, 140,1) 0 0 2px, rgba(78, 117, 140,1) 0 0 2px, rgba(78, 117, 140,1) 0 0 2px, black 0 0 1px;
-}
-</style>

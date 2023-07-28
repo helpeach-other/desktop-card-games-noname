@@ -19,17 +19,17 @@ defineProps<MyselfPlayerProps>()
 
 <template>
   <!-- avatar -->
-  <div class="relative h-120px w-120px bg-cover" :style="{ backgroundImage: `url(${avatar})` }">
+  <div class="relative h-120px w-120px select-none bg-cover" :style="{ backgroundImage: `url(${avatar})` }">
     <!-- identity -->
-    <div class="green-shadow absolute right--8px top--12px z-2 text-lg text-white">
+    <div class="absolute right--8px top--12px z-2 cursor-default text-lg text-white green-shadow">
       {{ identity }}
     </div>
     <!-- name -->
-    <div class="blue-shadow absolute left-15px top-20px z-2 text-lg text-white">
+    <div class="absolute left-15px top-20px z-2 text-lg text-white blue-shadow">
       {{ name }}
     </div>
     <!-- hp -->
-    <div class="absolute bottom-20px right-15px z-2 text-lg text-white">
+    <div class="absolute bottom-10px right-5px z-2 text-lg text-white">
       <span v-if="maxHp > 7" class="green-shadow">
         {{ hp }}/{{ maxHp }}
       </span>
@@ -44,15 +44,3 @@ defineProps<MyselfPlayerProps>()
     </div>
   </div>
 </template>
-
-<style lang="less" scoped>
-.green-shadow {
-  text-shadow: rgba(57, 123, 4,1) 0 0 2px, rgba(57, 123, 4,1) 0 0 5px, rgba(57, 123, 4,1) 0 0 10px, rgba(57, 123, 4,1) 0 0 10px, rgba(57, 123, 4,1) 0 0 20px, rgba(57, 123, 4,1) 0 0 20px, black 0 0 1px;
-}
-.red-shadow {
-  text-shadow: rgba(128, 59, 2,1) 0 0 2px, rgba(128, 59, 2,1) 0 0 2px, rgba(128, 59, 2,1) 0 0 2px, rgba(128, 59, 2,1) 0 0 2px, black 0 0 1px;
-}
-.blue-shadow {
-  text-shadow: rgba(78, 117, 140,1) 0 0 2px, rgba(78, 117, 140,1) 0 0 2px, rgba(78, 117, 140,1) 0 0 2px, rgba(78, 117, 140,1) 0 0 2px, black 0 0 1px;
-}
-</style>
