@@ -39,7 +39,7 @@ defineProps<MyselfPlayerProps>()
       </div>
     </div>
     <!-- card count -->
-    <div class="absolute bottom-20px left-0 rounded-r bg-green-600 p1 text-sm text-white shadow-xl">
+    <div class="absolute bottom-20px left-0 rounded-r bg-green-600 p1 text-sm text-white shadow">
       {{ cardCount }}
     </div>
   </div>

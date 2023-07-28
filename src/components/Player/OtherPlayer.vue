@@ -18,14 +18,14 @@ defineProps<OtherPlayerProps>()
 </script>
 
 <template>
-  <div class="relative h-180px w-150px rounded-lg bg-[url(@/assets/images/wood.jpg)] p-1.5 shadow-2xl">
+  <div class="relative h-180px w-150px rounded-lg bg-[url(@/assets/images/wood.jpg)] p-1.5 shadow">
     <!-- identity -->
     <div class="absolute right--8px top--12px z-2 cursor-default text-lg text-white green-shadow">
       {{ identity }}
     </div>
     <!-- avatar -->
     <img
-      class="relative z-1 h-full w-full rounded-lg object-cover shadow-2xl"
+      class="relative z-1 h-full w-full rounded-lg object-cover shadow"
       :src="avatar"
       alt="avatar"
       :draggable="false"
@@ -45,7 +45,7 @@ defineProps<OtherPlayerProps>()
       </div>
     </div>
     <!-- card count -->
-    <div class="absolute bottom-20px left--8px rounded bg-green-600 p1 text-sm text-white shadow-xl">
+    <div class="absolute bottom-20px left--8px rounded bg-green-600 p1 text-sm text-white shadow">
       {{ cardCount }}
     </div>
   </div>
