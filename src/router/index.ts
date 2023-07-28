@@ -9,6 +9,11 @@ export const Routes: RouteRecordRaw[] = [
     component: () => import('@/views/Home/index.vue'),
   },
   {
+    path: '/singled',
+    name: 'singled',
+    component: () => import('@/views/Singled/index.vue'),
+  },
+  {
     path: '/404',
     name: '404',
     component: () => import('@/views/404.vue'),
