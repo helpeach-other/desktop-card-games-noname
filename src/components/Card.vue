@@ -2,11 +2,16 @@
 import type { Card } from '@/core/card/standard'
 import { CardType } from '@/core/card/standard'
 
-defineProps<Card>()
+const card = defineProps<Card>()
+const emit = defineEmits<{ click: [card: Card, event: MouseEvent] }>()
+
+function handleClickCard(event: MouseEvent) {
+  emit('click', card, event)
+}
 </script>
 
 <template>
-  <div class="relative h-104px w-104px select-none rounded-lg bg-[url(@/assets/images/wood.jpg)] shadow">
+  <div class="relative h-104px w-104px select-none rounded-lg bg-[url(@/assets/images/wood.jpg)] shadow" @click="handleClickCard">
     <p class="absolute left-8px top-8px w-18px border border-slate-600 rounded border-solid text-center leading-4.5">
       {{ name }}
     </p>
