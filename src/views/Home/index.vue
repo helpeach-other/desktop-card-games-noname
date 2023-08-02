@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import configuration from '@/configuration'
 import AButton from '@/components/AButton.vue'
+import { isMobile } from '@/lib/sys/window'
 
 const models = configuration.models.loads
 const active = ref(0)
@@ -29,7 +30,7 @@ function toView() {
             'bg-cyan-500': active === i,
             '!border-cyan-500': active === i,
             'text-sky-100': active === i,
-          }" @click="active = i"
+          }" @click="active = i, isMobile() && toView()"
         >
           {{ model.name }}
         </div>
