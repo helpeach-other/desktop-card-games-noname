@@ -1,6 +1,7 @@
 import { release } from 'node:os'
 import { join } from 'node:path'
-import { BrowserWindow, app, ipcMain, shell } from 'electron'
+import { BrowserWindow, app, ipcMain } from 'electron'
+import { ipcRegister } from '@/lib/sys/ipc'
 
 // The built directory structure
 //
@@ -65,18 +66,7 @@ async function createWindow() {
     win.loadFile(indexHtml)
   }
 
-  // Test actively push message to the Electron-Renderer
-  win.webContents.on('did-finish-load', () => {
-    win?.webContents.send('main-process-message', new Date().toLocaleString())
-  })
-
-  // Make all links open with the browser, not with the application
-  win.webContents.setWindowOpenHandler(({ url }) => {
-    if (url.startsWith('https:'))
-      shell.openExternal(url)
-    return { action: 'deny' }
-  })
-  // win.webContents.on('will-navigate', (event, url) => { }) #344
+  ipcRegister(win)
 }
 
 app.whenReady().then(createWindow)
