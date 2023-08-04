@@ -31,9 +31,3 @@ function handleClickCard(event: MouseEvent) {
     </div>
   </div>
 </template>
-
-<style lang="less" scoped>
-.card {
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.45) 0 3px 10px;
-}
-</style>
