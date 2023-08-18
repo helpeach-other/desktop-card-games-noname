@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { CardClass } from '@/core/card/standard'
-import { CardSuit, CardSuitStringMap, CardTokenStringMap, CardType } from '@/core/card/standard'
+import type { CardEntry } from '@/core/card/entry'
+import { CardSuit, CardSuitStringMap, CardTokenStringMap } from '@/core/card/standard'
+import { CardType } from '@/core/card/types'
 
 interface Props {
-  card: CardClass
+  card: CardEntry
   suit: CardSuit
   token: number
   clipped?: boolean
 }
 
 const props = defineProps<Props>()
-const emit = defineEmits<{ click: [card: CardClass, event: MouseEvent] }>()
+const emit = defineEmits<{ click: [card: CardEntry, event: MouseEvent] }>()
 
 const cardToken = computed(() => `${CardSuitStringMap[props.suit]} ${CardTokenStringMap[props.token] || props.token}`)
 const isRedToken = computed(() => [CardSuit.Diamond, CardSuit.Heart].includes(props.suit))
@@ -24,6 +25,8 @@ const tokenTextCls = computed(() => ({
 }))
 
 function handleClickCard(event: MouseEvent) {
+  // TODO 需要注入外部依赖
+  props.card.effect()
   emit('click', props.card, event)
 }
 </script>

@@ -69,7 +69,7 @@ onMounted(computeHandCardTransform)
       <div ref="handCardsRef" class="h-full flex-1 shrink-0 of-hidden" :class="{ 'of-x-scroll': needOverflow }">
         <div class="h-full min-w-full flex gap-6px p-1.5" :style="{ width: handCardsWrapperWidth }" @wheel="handleWheel">
           <Card
-            v-for="([suit, token, card], i) in handCards" :key="i" :suit="suit" :token="token" :card="card"
+            v-for="([suit, token, card], i) in handCards" :key="i" :suit="suit" :token="token" :card="new card()"
             class="inline-block shrink-0 cursor-pointer transition-all duration-300"
             :class="{
               'ac-shadow': activeCard === i,
