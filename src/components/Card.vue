@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { CardEntry } from '@/core/card/entry'
+import { CardEntry } from '@/core/card/entry'
 import { CardSuit, CardSuitStringMap, CardTokenStringMap } from '@/core/card/standard'
-import { CardType } from '@/core/card/types'
 
 interface Props {
   card: CardEntry
@@ -60,7 +59,7 @@ function handleClickCard(event: MouseEvent) {
     >
       {{ cardToken }}
     </div>
-    <div v-if="card.type & CardType.Weapon">
+    <div v-if="card.type & CardEntry.CardType.Weapon">
       <div class="absolute bottom-8px right-8px text-center">
         <span class="text-slate-700">范围：3</span>
       </div>

@@ -5,7 +5,8 @@
  */
 
 import { CardEntry } from './entry'
-import { CardType } from './types'
+
+const CardType = CardEntry.CardType
 
 /** 花色 */
 export enum CardSuit {
