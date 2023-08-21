@@ -49,7 +49,7 @@ export class Skill extends EventEmitter {
   /** 描述 */
   description?: string
   /** 语音 */
-  audio?: typeof Audio
+  audios?: string[]
   /** 运行扳机 */
   trigger!: Trigger
 
