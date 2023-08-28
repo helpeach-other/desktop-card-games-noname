@@ -1,9 +1,10 @@
 import { EventEmitter } from 'node:events'
-import type { Ref } from 'vue'
-import type Card from '@/components/Card.vue'
+import { nanoid } from 'nanoid'
+import type { CardEntry } from '../card/entry'
+import type MyselfPlayer from '@/components/Player/MyselfPlayer.vue'
 
 export interface UIComponents {
-  SelectCards: Ref<typeof Card>
+  myselfPlayer: InstanceType<typeof MyselfPlayer>
 }
 
 class UIEventEmitter extends EventEmitter {
@@ -13,12 +14,11 @@ class UIEventEmitter extends EventEmitter {
     super()
 
     // 初始化事件
-    this.on('selectCards', () => {
-      // TODO
-    })
-    this.on('showSelectCards', () => {
-      // TODO
-    })
+    this.handle('selectCards', () => this.selectCards())
+  }
+
+  uuid() {
+    return nanoid()
   }
 
   /** 注册 UI 组件 */
@@ -27,16 +27,33 @@ class UIEventEmitter extends EventEmitter {
       ...this.components,
       ...components,
     } as UIComponents
+    return this
+  }
+
+  invoke(event: string, ...args: any[]) {
+    const uuid = this.uuid()
+    this.emit(event, uuid, ...args)
+    return new Promise((resolve) => {
+      this.on(`${event}-done-${uuid}`, (data) => {
+        resolve({ data })
+        this.removeAllListeners(`${event}-done-${uuid}`)
+      })
+    })
+  }
+
+  handle(event: string, callback: (...args: any[]) => any) {
+    this.on(event, async (uuid: string, ...args) => {
+      await callback(...args)
+      this.emit(`${event}-done-${uuid}`, await callback(...args))
+    })
+    return this
   }
 
   /** 选择手牌 */
   selectCards() {
-    this.emit('selectCards')
-  }
-
-  /** 显示选择手牌 */
-  showSelectCards() {
-    this.emit('showSelectCards')
+    this.components.myselfPlayer?.selectCards?.()
+    // TODO 获取选择的手牌
+    return [] as CardEntry[]
   }
 }
 
